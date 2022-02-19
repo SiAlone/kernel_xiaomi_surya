@@ -17,7 +17,7 @@ jobs:
         run: |
           export TOKEN=${AUTH_TOKEN}
           export TGKEN=${TELEGRAM_TOKEN}
-          bash build-kernel.sh
+          bash kernel-build.sh
         env:
           AUTH_TOKEN: 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
           TELEGRAM_TOKEN: 5136571256:AAEVb6wcnHbB358erxRQsP4crhW7zNh_7p8
