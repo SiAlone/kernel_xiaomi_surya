@@ -1,0 +1,28 @@
+name: Build Kernel on Github Actions
+
+on:
+  push:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container:
+      image: panchajanya1999/archlinux:latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup env
+        run: pacman -Syu --needed --noconfirm wget base-devel xmlto inetutils bc cpio python-sphinx python-sphinx_rtd_theme graphviz imagemagick git python2 python zip github-cli
+      - name: Build Quantumn Kernel
+        run: |
+          export TOKEN=${AUTH_TOKEN}
+          export TGKEN=${TELEGRAM_TOKEN}
+          bash build-kernel.sh
+        env:
+          AUTH_TOKEN: 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
+          TELEGRAM_TOKEN: 5136571256:AAEVb6wcnHbB358erxRQsP4crhW7zNh_7p8
+      - name: Store Kernel Package as Artifact
+        uses: actions/upload-artifact@v2
+        with:
+         name: Flashable zip
+         path: AnyKernel3/package.zip
