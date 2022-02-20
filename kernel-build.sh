@@ -22,7 +22,7 @@ PARSE_ORIGIN="$(git config --get remote.origin.url)"
 COMMIT_POINT="$(git log --pretty=format:'%h : %s' -1)"
 CHEAD="$(git rev-parse --short HEAD)"
 LATEST_COMMIT="[$COMMIT_POINT](https://github.com/fakeriz/kernel_xiaomi_surya/commit/$CHEAD)"
-LOGS_URL="[See Circle CI Build Logs Here](https://circleci.com/gh/fakeriz/kernel_xiaomi_surya/$CIRCLE_BUILD_NUM)"
+LOGS_URL="[See Github Build Logs Here](https://circleci.com/gh/fakeriz/kernel_xiaomi_surya/$CIRCLE_BUILD_NUM)"
 
 # Compiler
 mkdir -p "/mnt/workdir/clang"
@@ -181,7 +181,7 @@ packingkernel() {
 # Starting
 NOW=$(date +%d/%m/%Y-%H:%M)
 START=$(date +"%s")
-tg_cast "*CI Build $CIRCLE_BUILD_NUM Triggered*" \
+tg_cast "*CI Build GITHUB_RUN_NUMBER Triggered*" \
 	"Compiling with *$(nproc --all)* CPUs" \
 	"-----------------------------------------" \
 	"*Compiler ver:* ${CSTRING}" \
