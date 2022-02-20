@@ -25,15 +25,15 @@ LATEST_COMMIT="[$COMMIT_POINT](https://github.com/fakeriz/kernel_xiaomi_surya/co
 LOGS_URL="[See Circle CI Build Logs Here](https://circleci.com/gh/fakeriz/kernel_xiaomi_surya/$CIRCLE_BUILD_NUM)"
 
 # Compiler
-mkdir -p "/mnt/workdir/silont-clang"
+mkdir -p "/mnt/workdir/clang"
 COMP_TYPE="clang" # unset if want to use gcc as compiler
-CLANG_DIR="/mnt/workdir/silont-clang"
-CLANG_URL="https://github.com/silont-project/silont-clang/archive/20210117.tar.gz"
+CLANG_DIR="/mnt/workdir/clang"
+CLANG_URL="https://github.com/kdrag0n/proton-clang"
 GCC_DIR="" # Doesn't needed if use proton-clang
 GCC32_DIR="" # Doesn't needed if use proton-clang
 CLANG_FILE="/mnt/workdir/clang.tar.gz"
 
-git clone https://github.com/silont-project/silont-clang --depth=1 --single-branch $CLANG_DIR -b master
+git clone https://github.com/kdrag0n/proton-clang --depth=1 --single-branch $CLANG_DIR -b master
 
 if [[ "${COMP_TYPE}" =~ "clang" ]]; then
     CSTRING=$("$CLANG_DIR"/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
